@@ -116,7 +116,7 @@ function tileSurface(kind: string) {
 }
 
 /* ============ hero ============ */
-function Hero({ go }: { go: Go }) {
+function Hero({ go, animateOnLoad }: { go: Go; animateOnLoad: boolean }) {
   const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -158,22 +158,22 @@ function Hero({ go }: { go: Go }) {
 
         <div className="absolute inset-x-0 bottom-0 p-6 pb-10 md:p-[56px] md:pb-[64px]">
           <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)]">
-            <div className="max-w-3xl pr-28 md:pr-40 lg:pr-0">
-              <Reveal delay={80}>
+            <div className="max-w-3xl pr-0 md:pr-40 lg:pr-0">
+              <Reveal delay={80} animateOnLoad={animateOnLoad}>
                 <Eyebrow tone="mint" className="mb-6">Deaf-focused NGO · Abuja · Nigeria</Eyebrow>
               </Reveal>
-              <Reveal as="h1" delay={180} className="text-[clamp(30px,4vw,56px)] font-light leading-[0.98] tracking-[-0.045em] text-paper">
+              <Reveal as="h1" delay={180} animateOnLoad={animateOnLoad} className="text-[clamp(30px,4vw,56px)] font-light leading-[0.98] tracking-[-0.045em] text-paper">
                 Yagazie Weng Umezurike Foundation for the Deaf
               </Reveal>
-              <Reveal delay={280} className="mt-5 max-w-xl font-serif text-[clamp(21px,2.4vw,32px)] italic leading-[1.2] text-mint">
+              <Reveal delay={280} animateOnLoad={animateOnLoad} className="mt-5 max-w-xl font-serif text-[clamp(21px,2.4vw,32px)] italic leading-[1.2] text-mint">
                 A Voice for Every Sign, Hope for Every Hand.
               </Reveal>
-              <Reveal delay={380} className="t-subtitle mt-5 max-w-xl text-paper/85">
+              <Reveal delay={380} animateOnLoad={animateOnLoad} className="t-subtitle mt-5 max-w-xl text-paper/85">
                 We are a deaf-focused NGO committed to disability inclusion,
                 accessibility, and sign language advocacy for the Deaf and hard of
                 hearing community in Nigeria.
               </Reveal>
-              <Reveal delay={480} className="mt-8 flex flex-wrap gap-4">
+              <Reveal delay={480} animateOnLoad={animateOnLoad} className="mt-8 flex flex-wrap gap-4">
                 <MintButton href="#our-work-section" onClick={(e) => { e.preventDefault(); go("home", "our-work-section"); }} arrow>
                   Our Mission
                 </MintButton>
@@ -182,7 +182,7 @@ function Hero({ go }: { go: Go }) {
                 </MintOutlineButton>
               </Reveal>
             </div>
-            <Reveal delay={320} className="absolute right-5 top-[18%] w-24 md:right-8 md:w-32 lg:right-[5%] lg:top-[16%] lg:w-[24%] lg:max-w-[300px]">
+            <Reveal delay={320} animateOnLoad={animateOnLoad} className="absolute right-5 top-[14%] w-20 md:right-8 md:top-[18%] md:w-32 lg:right-[5%] lg:top-[16%] lg:w-[24%] lg:max-w-[300px]">
               <img
                 src="/img/Yagazie-Logo.png"
                 alt="Yagazie Weng Umezurike Foundation for the Deaf"
@@ -280,10 +280,10 @@ function AudienceRows({ go }: { go: Go }) {
 }
 
 /* ============ page ============ */
-export default function Home({ go }: { go: Go }) {
+export default function Home({ go, animateOnLoad }: { go: Go; animateOnLoad: boolean }) {
   return (
     <>
-      <Hero go={go} />
+      <Hero go={go} animateOnLoad={animateOnLoad} />
 
       {/* mission statement + doors */}
       <section id="our-work-section" aria-label="Our mission" className="bg-forest px-3 py-20 md:px-12 md:py-28">

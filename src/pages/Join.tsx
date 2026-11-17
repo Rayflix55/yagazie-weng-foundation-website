@@ -130,11 +130,17 @@ function SubNav() {
   );
 }
 
-export default function Join(_: { go: Go }) {
+export default function Join({
+  animateOnLoad,
+}: {
+  go: Go;
+  animateOnLoad: boolean;
+}) {
   return (
     <>
       <section aria-label="Join us" className="bg-forest p-3 pb-0">
         <PageHero
+          animateOnLoad={animateOnLoad}
           img="/img/vol.webp"
           alt="Volunteers working together to support the Deaf community"
           fullImage

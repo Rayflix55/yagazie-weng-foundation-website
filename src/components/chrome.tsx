@@ -100,7 +100,7 @@ export function AnnouncementBar({
   if (!open) return null;
   return (
     <div className="fixed inset-x-0 top-0 z-[55] flex h-12 items-center justify-center bg-linen px-12 text-center shadow-annbar">
-      <p className="text-[15px] leading-6 text-forest">
+      <p className="text-xs leading-4 text-forest sm:text-[15px] sm:leading-6">
         The National Commission for Persons with Disabilities has endorsed our mission.{" "}
         <button
           onClick={() => go("work", "advocacy")}
@@ -177,7 +177,7 @@ export function Nav({ page, go, barOpen }: { page: Page; go: Go; barOpen: boolea
       >
         <nav
           aria-label="Primary"
-          className="relative mx-auto flex h-[74px] max-w-[1060px] items-center justify-between gap-6 rounded-full border border-white/[0.16] bg-[#00243f]/78 px-3 pl-5 shadow-[0_10px_40px_rgba(0,20,40,0.35)] backdrop-blur-2xl backdrop-saturate-150 md:h-[82px] md:pl-7"
+          className="relative mx-auto flex h-[74px] max-w-[1060px] items-center justify-between gap-6 rounded-full border border-white/[0.22] bg-[#00243f]/45 px-3 pl-5 shadow-[0_10px_40px_rgba(0,20,40,0.3),inset_0_1px_0_rgba(255,255,255,0.24),inset_0_-1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl backdrop-saturate-200 before:pointer-events-none before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-b before:from-white/[0.1] before:via-white/[0.02] before:to-transparent md:h-[82px] md:pl-7"
         >
           {/* wordmark */}
           <button

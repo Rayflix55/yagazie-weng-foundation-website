@@ -40,18 +40,30 @@ export function Reveal({
   className,
   delay = 0,
   as: Tag = "div",
+  animateOnLoad,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
   as?: ElementType;
+  animateOnLoad?: boolean;
 }) {
   const [ref, inView] = useInView<HTMLDivElement>();
+  const [loadAnimationStarted, setLoadAnimationStarted] = useState(false);
+
+  useEffect(() => {
+    if (animateOnLoad !== true) return;
+    const frame = window.requestAnimationFrame(() => setLoadAnimationStarted(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [animateOnLoad]);
+
+  const visible = animateOnLoad === undefined ? inView : loadAnimationStarted;
+
   return (
     <Tag
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={cn("rv", inView && "rv-in", className)}
+      className={cn("rv", visible && "rv-in", className)}
     >
       {children}
     </Tag>

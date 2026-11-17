@@ -239,11 +239,11 @@ export default function App() {
       <Nav page={route.page} go={go} barOpen={barOpen} />
 
       <main id="main" className={cn("transition-[padding] duration-500", barOpen && "pt-12")}>
-        {route.page === "home"   && <Home   go={go} />}
-        {route.page === "about"  && <About  go={go} />}
-        {route.page === "work"   && <Work   go={go} />}
-        {route.page === "join"   && <Join   go={go} />}
-        {route.page === "donate" && <Donate go={go} />}
+        {route.page === "home"   && <Home   go={go} animateOnLoad={ready} />}
+        {route.page === "about"  && <About  go={go} animateOnLoad={ready} />}
+        {route.page === "work"   && <Work   go={go} animateOnLoad={ready} />}
+        {route.page === "join"   && <Join   go={go} animateOnLoad={ready} />}
+        {route.page === "donate" && <Donate go={go} animateOnLoad={ready} />}
       </main>
 
       {/* hide the generic closing CTA footer on the donate page — it already has its own call to action */}

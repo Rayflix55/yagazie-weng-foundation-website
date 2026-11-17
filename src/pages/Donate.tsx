@@ -162,7 +162,13 @@ function AccountCard({
 }
 
 /* ─── main page ──────────────────────────────────────────────── */
-export default function Donate({ go }: { go: Go }) {
+export default function Donate({
+  go,
+  animateOnLoad,
+}: {
+  go: Go;
+  animateOnLoad: boolean;
+}) {
   const [selectedId, setSelectedId] = useState<string>(ACCOUNTS[0].id);
   const selected = ACCOUNTS.find((a) => a.id === selectedId)!;
 
@@ -203,26 +209,26 @@ export default function Donate({ go }: { go: Go }) {
             <circle cx="174" cy="128" r="3" fill="#9fdff6" />
           </svg>
 
-          <Reveal>
+          <Reveal animateOnLoad={animateOnLoad}>
             <Eyebrow tone="mint" className="mb-5">
               Direct bank transfer
             </Eyebrow>
           </Reveal>
 
-          <Reveal as="h1" delay={120} className="t-heading max-w-2xl text-paper">
+          <Reveal as="h1" delay={120} animateOnLoad={animateOnLoad} className="t-heading max-w-2xl text-paper">
             Give with intention.
             <br />
             Give with <It>impact.</It>
           </Reveal>
 
-          <Reveal delay={280} className="t-lead mt-6 max-w-xl text-paper/65">
+          <Reveal delay={280} animateOnLoad={animateOnLoad} className="t-lead mt-6 max-w-xl text-paper/65">
             100% of every naira goes directly to hearing aids, sign language
             education, advocacy and economic inclusion for the Deaf community
             in Nigeria.
           </Reveal>
 
           {/* trust row */}
-          <Reveal delay={380} className="mt-10 flex flex-wrap gap-6">
+          <Reveal delay={380} animateOnLoad={animateOnLoad} className="mt-10 flex flex-wrap gap-6">
             {[
               "100% to local projects",
               "Transparent reporting",
@@ -242,7 +248,7 @@ export default function Donate({ go }: { go: Go }) {
 
       {/* Linen inset — accounts + details */}
       <section className="mx-3 rounded-b-[12px] bg-linen md:mx-3">
-        <div className="grid gap-10 px-6 py-14 md:px-14 md:py-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.6fr)] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 px-6 py-14 md:px-14 md:py-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.6fr)] lg:gap-16">
 
           {/* left — account selector */}
           <div>
@@ -266,7 +272,7 @@ export default function Donate({ go }: { go: Go }) {
 
           {/* right — account details */}
           <Reveal delay={120}>
-            <div className="rounded-[8px] bg-paper p-8 md:p-10">
+            <div className="rounded-[8px] bg-paper p-8 md:p-10 [overflow-wrap:anywhere]">
               {/* header */}
               <div className="flex items-center gap-4 border-b border-forest/[0.08] pb-7">
                 <span className="grid h-12 w-12 place-items-center rounded-[6px] bg-ringsand">

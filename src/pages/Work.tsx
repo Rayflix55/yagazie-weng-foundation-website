@@ -34,11 +34,12 @@ function AdvocacyCard({ c, i }: { c: (typeof ADVOCACY_CARDS)[number]; i: number 
   );
 }
 
-export default function Work({ go }: { go: Go }) {
+export default function Work({ go, animateOnLoad }: { go: Go; animateOnLoad: boolean }) {
   return (
     <>
       <section aria-label="Our work" className="bg-forest p-3 pb-0">
         <PageHero
+          animateOnLoad={animateOnLoad}
           img="/img/ad.webp"
           alt="Disability rights advocates holding signs at a public rally"
           objectFit="contain"

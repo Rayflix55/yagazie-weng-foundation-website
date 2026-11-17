@@ -215,8 +215,8 @@ export function GallerySlider({ slides, id }: { slides: Slide[]; id: string }) {
           </div>
         ))}
       </div>
-      <div className="mt-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -229,7 +229,7 @@ export function GallerySlider({ slides, id }: { slides: Slide[]; id: string }) {
             />
           ))}
         </div>
-        <div className="flex gap-2">
+        <div className="flex shrink-0 gap-2">
           <button
             onClick={() => go(-1)}
             aria-label="Previous photo"
@@ -339,6 +339,7 @@ export function PageHero({
   objectPosition = "center",
   objectFit = "cover",
   fullImage = false,
+  animateOnLoad,
 }: {
   img: string;
   alt: string;
@@ -348,9 +349,10 @@ export function PageHero({
   objectPosition?: string;
   objectFit?: "cover" | "contain";
   fullImage?: boolean;
+  animateOnLoad: boolean;
 }) {
   return (
-    <div className={`relative overflow-hidden rounded-[12px] ${fullImage ? "aspect-[4/2] min-h-[80vh]" : "min-h-[62vh]"}`}>
+    <div className={`relative w-full overflow-hidden rounded-[12px] ${fullImage ? "aspect-[4/2] min-h-[80vh]" : "min-h-[62vh]"}`}>
       <img
         src={img}
         alt={alt}
@@ -366,16 +368,16 @@ export function PageHero({
         }}
       />
       <div className="absolute inset-x-0 bottom-0 p-6 pb-9 md:p-[52px]">
-        <Reveal>
+        <Reveal animateOnLoad={animateOnLoad}>
           <Eyebrow tone="mint" className="mb-5">
             {eyebrow}
           </Eyebrow>
         </Reveal>
-        <Reveal as="h1" delay={140} className="t-heading max-w-[16ch] text-paper">
+        <Reveal as="h1" delay={140} animateOnLoad={animateOnLoad} className="t-heading max-w-[16ch] text-paper">
           {title}
         </Reveal>
         {lead && (
-          <Reveal delay={300} className="t-lead mt-6 max-w-xl text-paper/85">
+          <Reveal delay={300} animateOnLoad={animateOnLoad} className="t-lead mt-6 max-w-xl text-paper/85">
             {lead}
           </Reveal>
         )}

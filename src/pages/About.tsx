@@ -238,11 +238,12 @@ function Team({ go }: { go: Go }) {
   );
 }
 
-export default function About({ go }: { go: Go }) {
+export default function About({ go, animateOnLoad }: { go: Go; animateOnLoad: boolean }) {
   return (
     <>
       <section aria-label="About us" className="bg-forest p-3 pb-0">
         <PageHero
+          animateOnLoad={animateOnLoad}
           img="/img/pic-4.jpeg"
           alt="A father and his young daughter practicing a sign together at a sunlit window"
           objectPosition="center 28%"
