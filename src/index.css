@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@theme {
+  /* Yagazie original blue-led palette */
+  --color-forest: #003459;
+  --color-mint: #00a8e8;
+  --color-linen: #f5f7fa;
+  --color-paper: #ffffff;
+  --color-jade: #007ea7;
+  --color-pine: #0b5f83;
+  --color-oat: #eaf4fb;
+  --color-cteal: #007ea7;
+  --color-seafoam: #9fdff6;
+  --color-ringsand: #d7e5ef;
+  --color-mist: #ffffff;
+  --color-moss: #2d3748;
+  --color-quote: #222222;
+  --color-quiet: #617282;
+
+  --font-sans: "Lato", Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+
+  --shadow-annbar: 0 0 4px 4px rgba(0, 126, 167, 0.1);
+  --shadow-navcard: 0 8px 30px rgba(0, 52, 89, 0.12);
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-mint);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+[id] {
+  scroll-margin-top: 120px;
+}
+
+/* ---------- type helpers ---------- */
+.t-hero {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  font-size: clamp(2.9rem, 6.2vw, 4.75rem);
+}
+.t-hero-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  font-size: clamp(3.5rem, 7.4vw, 5.7rem);
+  letter-spacing: normal;
+}
+.t-heading {
+  font-weight: 300;
+  line-height: 1;
+  font-size: clamp(2.4rem, 4.6vw, 3.875rem);
+}
+.t-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 1.11em;
+  letter-spacing: normal;
+}
+.t-section {
+  font-weight: 300;
+  line-height: 1;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+.t-card {
+  font-weight: 300;
+  line-height: 1.2;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+.t-subtitle {
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+}
+.t-lead {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.36px;
+}
+.t-btn {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 27px;
+  letter-spacing: -0.2px;
+}
+
+/* ---------- scroll reveal ---------- */
+.rv {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(6px);
+  transition:
+    opacity 1s var(--ease-luxe),
+    transform 1s var(--ease-luxe),
+    filter 1s var(--ease-luxe);
+  will-change: opacity, transform, filter;
+}
+.rv.rv-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ---------- marquee ---------- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 42s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---------- outcome rings ---------- */
+.ring-arc {
+  transition: stroke-dashoffset 1.8s var(--ease-luxe) 0.35s;
+}
+
+/* ---------- photo grade ---------- */
+.warm-img {
+  filter: saturate(0.98) contrast(1.03) brightness(1.01);
+}
+
+/* ---------- aurora drift ---------- */
+@keyframes aurora-spin {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(28deg) scale(1.08); }
+  to { transform: rotate(0deg) scale(1); }
+}
+.aurora {
+  animation: aurora-spin 22s ease-in-out infinite;
+}
+
+/* ---------- hero curves draw-in ---------- */
+.draw-curve {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2.4s var(--ease-luxe) 0.6s;
+}
+.rv-in .draw-curve {
+  stroke-dashoffset: 0;
+}
+
+/* ---------- underline input ---------- */
+.nl-input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.502);
+  border-radius: 0;
+  transition: border-color 0.4s var(--ease-luxe);
+}
+.nl-input:focus {
+  outline: none;
+  border-bottom-color: var(--color-mint);
+}
+.nl-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- glass helpers ---------- */
+.glass-desktop {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 30px rgba(0, 52, 89, 0.12);
+}
+
+/* ---------- donate modal slide-in ---------- */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- shimmer for underlines ---------- */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv { transition: none; opacity: 1; transform: none; filter: none; }
+  .marquee-track, .aurora { animation: none; }
+  .ring-arc, .draw-curve { transition: none; stroke-dashoffset: 0 !important; }
+}
